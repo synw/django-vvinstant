@@ -1,0 +1,41 @@
+{% load i18n vvinstant_tags %}
+{% if user.is_superuser %}
+<div id="instant" class="container-fluid" style="display:none">
+	<div class="row">
+		<div class="col-xs-12 text-right" style="padding-top:0.5em">
+				<div class="pull-left" v-for="cl in eventLabels" v-bind:div="cl">
+					<div v-bind:id="cl.name" 
+						style="margin-right:0.5em;display:inline-block;opacity:0.6" 
+						v-html="cl.label" 
+						@click="activateEventClass(cl.name)">
+					</div>
+				</div>
+				<div id="msg_status" class="pull-left" style="display:inline-block;margin:0.2em 1em 0 0.5em;" v-html="msgStatus"></div>
+				{% get_channels as channels %}
+				{% for channel in channels %}
+					<div id="{{ channel }}" class="label label-default" style="margin:0.5em;display:inline-block" @click="activateChannel('{{ channel }}')">
+						{{ channel }}
+					</div>
+				{% endfor %}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12" style="padding-top:1em">
+			<form id="instant_form" class="form-horizontal">
+				<div class="col-xs-12 col-sm-10">
+					<div class="form-group">
+						<input id="msg" class="form-control" type="text" style="min-width:80%" 
+							v-bind:placeholder="instantFormPlaceholder">
+						</input>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-2">
+					<div class="form-group">
+						<button id="submitMsg" type="submit" class="btn btn-block btn-primary disabled">{% trans "Publish" %}</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endif %}
