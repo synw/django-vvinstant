@@ -1,0 +1,15 @@
+{% load i18n %}
+{% verbatim %}
+<ul class="list-group" v-for="msg in msgs">
+	<li class="list-group-item" v-bind:id="msg.uid">
+		<a href="" class="pull-right btn btn-link btn-sm" @click='delMsg(msg)'>
+			<i class="fa fa-close" style="color:red"></i>
+		</a>
+		<span v-html="formatMsg(msg)"></span>
+	</li>
+</ul>
+<div class="pull-right" style="margin-top:1em">
+	<a class="btn btn-danger btn-sm" href="" @click="deleteAllMsgs()">
+		{% endverbatim %}{% trans 'Delete all' %}
+	</a>
+</div>

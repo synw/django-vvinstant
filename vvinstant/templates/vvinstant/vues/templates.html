@@ -4,7 +4,8 @@
 	<div class="row">
 		<div class="col-xs-12 text-right" style="padding-top:0.5em">
 				<div class="pull-left" v-for="cl in eventLabels" v-bind:div="cl">
-					<div v-bind:id="cl.name" 
+					<div v-bind:id="cl.name"
+						href="" 
 						style="margin-right:0.5em;display:inline-block;opacity:0.6" 
 						v-html="cl.label" 
 						@click="activateEventClass(cl.name)">
@@ -25,7 +26,7 @@
 				<div class="col-xs-12 col-sm-10">
 					<div class="form-group">
 						<input id="msg" class="form-control" type="text" style="min-width:80%" 
-							v-bind:placeholder="instantFormPlaceholder">
+							v-bind:placeholder="instantFormPlaceholder" v-model="msgToSend">
 						</input>
 					</div>
 				</div>

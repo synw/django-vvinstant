@@ -1,3 +1,5 @@
-<a href="" v-bind:style="{ display: showMsgsCounter }">
-	<i class="fa fa-envelope-o"></i>&nbsp;{% verbatim %}{{numMsgs}}{% endverbatim %}
+{% verbatim %}
+<a href="" @click="toggleMsgSidebar()" v-bind:style="{ display: showMsgsCounter }">
+	<i v-bind:class="msgIconClass"></i>&nbsp;{{numMsgs}}
 </a>
+{% endverbatim %}

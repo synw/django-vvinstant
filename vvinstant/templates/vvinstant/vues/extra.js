@@ -1,8 +1,22 @@
 {% load i18n %}
+{% include "instant/event_class_format.js" %}
+{% if user.is_superuser %}
 function post_instant_msg() {
 	url = "{% url 'instant-post-msg' %}";
+	var empty = '<i class="fa fa-close" style="color:red"></i>&nbsp;{% trans "Please write a message" %}';
+	var emptychan = '<i class="fa fa-close" style="color:red"></i>&nbsp;{% trans "Please select a channel" %}';
+	if (app.msgToSend === "") {
+		app.msgStatus = empty;
+		$('#msg_status').delay(2500).fadeOut();
+		return
+	}
+	if (app.activeChannel === "") {
+		app.msgStatus = emptychan;
+		$('#msg_status').delay(2500).fadeOut();
+		return
+	}
 	app.msgStatus = '<i class="fa fa-spinner fa-spin" style="color:darkslateblue"></i>&nbsp;{% trans "Sending message" %}'; 
-	var data = {"msg":"", "channel": app.activeChannel, "event_class": app.eventClass};
+	var data = {"msg":app.msgToSend, "channel": app.activeChannel, "event_class": app.eventClass};
 	var err = '<i class="fa fa-close" style="color:red"></i>&nbsp;{% trans "Error sending the message" %}';
 	$.ajax({
 	      type: 'POST',
@@ -37,3 +51,4 @@ $( document ).ready(function() {
 	  return false;
 	});
 });
+{% endif %}
