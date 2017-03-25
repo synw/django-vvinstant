@@ -34,9 +34,6 @@
 		var msg = "{% trans 'Publish message in channel' %} "+channel;
 		this.instantFormPlaceholder = msg;
 	},
-	ecs: function() {
-		return ['default', 'important', 'ok', 'info', 'debug', 'warning']
-	},
 	getEventClasses: function() {
 		var event_classes = this.ecs();
 		for (i=0;i<event_classes.length;i++) {
@@ -56,6 +53,9 @@
 		}
 	},
 {% endif %}
+ecs: function() {
+	return ['default', 'important', 'ok', 'info', 'debug', 'warning']
+},
 toggleMsgSidebar: function() {
 	if ( this.sidebar === false ) {
 		document.getElementById("instant-sidebar").style.display = "block";
