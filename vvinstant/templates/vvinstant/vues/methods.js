@@ -70,7 +70,6 @@ toggleMsgSidebar: function() {
 			'col-sm-push-9': true,
 			"hidden": false
 		}
-		console.log("SIDE");
 		this.sidebar = true;
 	} else {
 		this.mainCol = {
