@@ -3,7 +3,7 @@
 <ul class="list-group" v-for="msg in msgs">
 	<li class="list-group-item" v-bind:id="msg.uid">
 		<a href="" class="pull-right btn btn-link btn-sm" @click='delMsg(msg)'>
-			<i class="fa fa-close" style="color:red"></i>
+			<i class="fa fa-close" style="color:red;position:relative;top:-0.3em"></i>
 		</a>
 		<span v-html="formatMsg(msg)"></span>
 	</li>

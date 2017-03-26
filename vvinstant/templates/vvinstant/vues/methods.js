@@ -103,8 +103,9 @@ formatMsg: function(msg) {
 },
 delMsg: function(msg) {
 	for (i=0;i<this.msgs.length;i++) {
-		if (msg.uid == this.msgs[i].uid) {
-			this.msgs.splice(0, 1);
+		if (msg.uid === this.msgs[i].uid) {
+			var index = this.msgs.indexOf(msg);
+			this.msgs.splice(index, 1);
 			this.numMsgs--;
 			break
 		}
