@@ -1,15 +1,19 @@
 {% load i18n %}
-{% verbatim %}
-<ul class="list-group" v-for="msg in msgs">
-	<li class="list-group-item" v-bind:id="msg.uid">
-		<a href="" class="pull-right btn btn-link btn-sm" @click='delMsg(msg)'>
-			<i class="fa fa-close" style="color:red;position:relative;top:-0.3em"></i>
-		</a>
-		<span v-html="formatMsg(msg)"></span>
-	</li>
-</ul>
-<div class="pull-right" style="margin-top:1em">
-	<a class="btn btn-danger btn-sm" href="" @click="deleteAllMsgs()">
-		{% endverbatim %}{% trans 'Delete all' %}
-	</a>
+<div id="instant-sidebar" v-bind:class="sideCol" style="display:none">
+	<div class="row">
+		<div class="col-sm-12 col-md-9 visible-md visible-lg" style="margin-bottom:1em">
+			<h3>{% trans 'Messages' %}</h3>
+		</div>
+		<div class="col-sm-12 col-md-9 visible-xs visible-sm">
+			<h3>{% trans 'Messages' %}</h3>
+		</div>
+		<div class="col-sm-12 col-md-3 visible-md visible-lg">
+			<div class="pull-right" style="margin-top:1.2em">{% include "vvinstant/togglebtn.html" %}</div>
+		</div>
+		<div class="col-sm-12 visible-xs visible-sm">
+			<div class="text-right">{% include "vvinstant/togglebtn.html" %}</div>
+		</div>
+		
+	</div>
+	{% include "vvinstant/sidebar_content.html" %}
 </div>
