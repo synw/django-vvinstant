@@ -13,13 +13,13 @@ msgStatus: "",
 sidebar: false,
 mainCol: {
 	"col-xs-12": true,
-	'col-sm-9': false,
-	'col-sm-pull-3': false
+	'col-sm-8': false,
+	'col-sm-pull-4': false
 },
 sideCol: {
 	"col-xs-12": true,
-	'col-sm-3': false,
-	'col-sm-push-9': false,
+	'col-sm-4': false,
+	'col-sm-push-8': false,
 	"hidden": true
 },
 msgIconClass: {

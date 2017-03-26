@@ -61,26 +61,26 @@ toggleMsgSidebar: function() {
 		document.getElementById("instant-sidebar").style.display = "block";
 		this.mainCol = {
 			"col-xs-12": true,
-			'col-sm-9': true,
-			'col-sm-pull-3': true
+			'col-sm-8': true,
+			'col-sm-pull-4': true
 		},
 		this.sideCol = {
 			"col-xs-12": true,
-			'col-sm-3': true,
-			'col-sm-push-9': true,
+			'col-sm-4': true,
+			'col-sm-push-8': true,
 			"hidden": false
 		}
 		this.sidebar = true;
 	} else {
 		this.mainCol = {
 			"col-xs-12": true,
-			'col-sm-9': false,
-			'col-sm-pull-3': false
+			'col-sm-8': false,
+			'col-sm-pull-4': false
 		},
 		this.sideCol = {
 			"col-xs-12": true,
-			'col-sm-3': false,
-			'col-sm-push-9': false,
+			'col-sm-4': false,
+			'col-sm-push-8': false,
 			"hidden": true
 		}
 		this.sidebar = false;
