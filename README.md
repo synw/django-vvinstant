@@ -38,3 +38,14 @@ Create a `instant/extra_handler.js` template with this content:
   ```django
 {% include "vvinstant/handlers.js" %}
   ```
+  
+A default template is available at `vvinstant/base.html`: please refer to it on how to integrate the widgets in your
+own base template
+
+Go to `/vvinstant/` to see it in action 
+
+## Todo
+
+- [ ] Rethink default event classes
+- [ ] Predefined behaviors on event classes
+

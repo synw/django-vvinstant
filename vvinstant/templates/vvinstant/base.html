@@ -1,0 +1,69 @@
+{% load staticfiles i18n vv_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Django Instant</title>
+	<script type="text/javascript" src="{% static 'js/vue.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/promise.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/page.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/store.legacy.min.js' %}"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" media="screen, projection" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" media="screen, projection" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" media="screen, projection" href="{% static 'css/togglebtn.css' %}" />
+</head>
+
+<body>
+<div id="app">
+	<div id="site_header" style="background-color:steelblue">
+		<div id="topbar">
+			<div id="instant_msgs" class="pull-right" style="display:none;font-size:160%;position:relative;top:0.7em;right:1em">
+				{% include "vvinstant/counter.html" %}
+			</div>
+		</div>
+		<div style="display:inline-block;position:relative;top:0.2em;left:2em;font-size:240%;margin-bottom:0.3em;color:white">
+			Django Instant
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div id="sidebar" class="row">
+			<div class="col-xs-12" style="background-color:grey">
+  				<div class="pull-right" style="margin:0.4em 0.8em 0.5em 0">
+					{% include "vvinstant/btn.html" %}
+				</div>
+	  		</div>
+		</div>
+	</div>
+	{% include "vvinstant/vues/templates.html" %}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12" style="padding-top:1em">
+				{% include "vvinstant/alerts.html" %}
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div v-bind:style="{ display: showApps }">{% block vvapps %}{% endblock %}</div>
+		{% include "vvinstant/sidebar.html" %}
+		<div id="content" v-bind:class="mainCol" v-html="content">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+	<div id="footer" class="container-fluid">
+	</div>
+	<script type="text/javascript">
+		{% block vues %}
+			{% getVvapps as apps %}
+			{% include "vv/app.js" %}
+		{% endblock %}
+	</script>
+</div>
+{% include "instant/client.html" %}
+<style>
+#site_header a, #site_header a:visited, #sidebar a, #sidebar a:visited {
+	color:white;
+}
+</style>
+</body>
+</html>
