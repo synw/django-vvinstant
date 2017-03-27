@@ -1,6 +1,6 @@
 {% load i18n vvinstant_tags %}
 {% if user.is_superuser %}
-<div id="instant" class="container-fluid" style="display:none">
+<div id="instant" class="container-fluid" style="display:none" v-show="instantForm">
 	<div class="row">
 		<div class="col-xs-12 text-right" style="padding-top:0.5em">
 				<div class="pull-left" v-for="cl in eventLabels" v-bind:div="cl">
