@@ -42,7 +42,11 @@ Create a `instant/extra_handler.js` template with this content:
 A default template is available at `vvinstant/base.html`: please refer to it on how to integrate the widgets in your
 own base template
 
-Go to `/vvinstant/` to see it in action 
+Go to `/vvinstant/` to see it in action
+
+## Installer and demo
+
+You can use the [Django Mogo](https://github.com/synw/django-mogo) installer script to get a demo or an install
 
 ## Todo
 
