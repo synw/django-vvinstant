@@ -89,8 +89,8 @@ delMsg: function(msg) {
 deleteAllMsgs: function() {
 	this.msgs = [];
 	this.numMsgs = 0;
-	if (this.sidebar === true) {
-		this.toggleMsgSidebar()
+	if (this.showSidebar === true) {
+		this.toggleSidebar();
 	}
 },
 closeWarningMsg: function() {
