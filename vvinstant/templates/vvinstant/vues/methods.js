@@ -56,36 +56,6 @@
 ecs: function() {
 	return ['default', 'important', 'ok', 'info', 'debug', 'warning']
 },
-toggleMsgSidebar: function() {
-	if ( this.sidebar === false ) {
-		document.getElementById("instant-sidebar").style.display = "block";
-		this.mainCol = {
-			"col-xs-12": true,
-			'col-sm-8': true,
-			'col-sm-pull-4': true
-		},
-		this.sideCol = {
-			"col-xs-12": true,
-			'col-sm-4': true,
-			'col-sm-push-8': true,
-			"hidden": false
-		}
-		this.sidebar = true;
-	} else {
-		this.mainCol = {
-			"col-xs-12": true,
-			'col-sm-8': false,
-			'col-sm-pull-4': false
-		},
-		this.sideCol = {
-			"col-xs-12": true,
-			'col-sm-4': false,
-			'col-sm-push-8': false,
-			"hidden": true
-		}
-		this.sidebar = false;
-	}
-},
 formatMsg: function(msg) {
 	var event_classes = this.ecs();
 	var label = "";

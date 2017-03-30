@@ -16,8 +16,8 @@ if ( event_class == 'important' ) {
 	app.msgs.push({"event_class": event_class, "message": message, "uid": uid});
 	document.getElementById("instant_msgs").style.display = "inline-block";
 	if (app.autoMsg === true ) {
-		if (app.sidebar === false) {
-			app.toggleMsgSidebar()
+		if (app.showSidebar === false) {
+			app.toggleSidebar()
 		}
 	}
 }

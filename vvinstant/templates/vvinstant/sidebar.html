@@ -1,19 +1,17 @@
 {% load i18n %}
-<div id="instant-sidebar" v-bind:class="sideCol" style="display:none">
-	<div class="row">
-		<div class="col-sm-12 col-md-9 visible-md visible-lg" style="margin-bottom:1em">
-			<h3>{% trans 'Messages' %}</h3>
-		</div>
-		<div class="col-sm-12 col-md-9 visible-xs visible-sm">
-			<h3>{% trans 'Messages' %}</h3>
-		</div>
-		<div class="col-sm-12 col-md-3 visible-md visible-lg">
-			<div class="pull-right" style="margin-top:1.2em">{% include "vvinstant/togglebtn.html" %}</div>
-		</div>
-		<div class="col-sm-12 visible-xs visible-sm">
-			<div class="text-right">{% include "vvinstant/togglebtn.html" %}</div>
-		</div>
-		
+
+<div class="row">
+	<div class="col-sm-12 col-md-9 visible-md visible-lg" style="margin-bottom:1em">
+		<h3>{% trans 'Messages' %}</h3>
 	</div>
-	{% include "vvinstant/sidebar_content.html" %}
+	<div class="col-sm-12 col-md-9 visible-xs visible-sm">
+		<h3>{% trans 'Messages' %}</h3>
+	</div>
+	<div class="col-sm-12 col-md-3 visible-md visible-lg">
+		<div class="pull-right" style="margin-top:1.2em">{% include "vvinstant/togglebtn.html" %}</div>
+	</div>
+	<div class="col-sm-12 visible-xs visible-sm">
+		<div class="text-right">{% include "vvinstant/togglebtn.html" %}</div>
+	</div>
 </div>
+{% include "vvinstant/sidebar_content.html" %}
