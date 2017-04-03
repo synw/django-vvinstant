@@ -13,7 +13,7 @@ if ( event_class == 'important' ) {
 	setTimeout(function() {$("#info-msg").slideUp()}, 5000);
 } else {
 	app.numMsgs++;
-	app.msgs.push({"event_class": event_class, "message": message, "uid": uid});
+	app.msgs.unshift({"event_class": event_class, "message": message, "uid": uid});
 	document.getElementById("instant_msgs").style.display = "inline-block";
 	if (app.autoMsg === true ) {
 		if (app.showSidebar === false) {
