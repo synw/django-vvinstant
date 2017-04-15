@@ -1,3 +1,10 @@
+{% load vvinstant_tags %}
+exclude = [{% for c in exlude_chans %}"{{ c }}"{% if not forloop.last %},{% endif %}{% endfor %}];
+for (i=0;i<exlude.length;i++) {
+	if (event_class === exclude[i]) {
+		return
+	} 
+}
 app.msgIconClass["fa-envelope-o"] = false;
 app.msgIconClass["fa-envelope"] = true;
 setTimeout(function(){

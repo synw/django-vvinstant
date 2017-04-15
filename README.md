@@ -30,6 +30,14 @@ urlpatterns = [
 
 urlpatterns.append(url(r'^',include('vv.urls')))
   ```
+  
+## Settings
+
+To exlude some channels from the display:
+
+  ```python
+VVINSTANT_EXCLUDE = ["$chan1", "chan2"]
+  ```
 
 ## Templates
 

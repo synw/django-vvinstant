@@ -11,6 +11,7 @@ ENABLE_PUBLIC_CHANNEL = getattr(settings, 'INSTANT_ENABLE_PUBLIC_CHANNEL', True)
 ENABLE_STAFF_CHANNEL = getattr(settings, 'INSTANT_ENABLE_STAFF_CHANNEL', False)
 ENABLE_USERS_CHANNEL = getattr(settings, 'INSTANT_ENABLE_USERS_CHANNEL', False)
 ENABLE_SUPERUSER_CHANNEL = getattr(settings, 'INSTANT_ENABLE_SUPERUSER_CHANNEL', False)
+EXCLUDE = getattr(settings, 'VVINSTANT_EXCLUDE', [])
 
 register = template.Library()
 
@@ -29,3 +30,7 @@ def get_channels():
         c = '$'+SITE_SLUG+'_admin'
         channels.append(c)
     return channels
+
+@register.simple_tag
+def exlude_chans():
+    return EXCLUDE
