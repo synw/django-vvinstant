@@ -1,10 +1,17 @@
 {% load vvinstant_tags %}
-exclude = [{% for c in exlude_chans %}"{{ c }}"{% if not forloop.last %},{% endif %}{% endfor %}];
-for (i=0;i<exlude.length;i++) {
-	if (event_class === exclude[i]) {
-		return
-	} 
-}
+console.log("NUM: {% num_excluded_chans %}");
+{% if num_excluded_chans != 0 %}
+	var exclude = [{% exclude_chans %}];
+	console.log("EX VAR: "+exclude);
+	for (i=0;i<exclude.length;i++) {
+		console.log(channel+" / "+exclude[i]);
+		if (channel === exclude[i]) {
+			return
+		}
+	}
+{% else %}
+console.log("NO");
+{% endif %}
 app.msgIconClass["fa-envelope-o"] = false;
 app.msgIconClass["fa-envelope"] = true;
 setTimeout(function(){

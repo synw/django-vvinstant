@@ -2,6 +2,7 @@
 
 from django import template
 from django.conf import settings
+from django.utils.html import mark_safe
 
 
 SITE_SLUG =  getattr(settings, 'SITE_SLUG', 'site')
@@ -32,5 +33,12 @@ def get_channels():
     return channels
 
 @register.simple_tag
-def exlude_chans():
-    return EXCLUDE
+def exclude_chans():
+    chans = []
+    for chan in EXCLUDE:
+        chans.append('"'+chan+'"')
+    return mark_safe(",".join(chans))
+
+@register.simple_tag
+def num_excluded_chans():
+    return len(EXCLUDE)
