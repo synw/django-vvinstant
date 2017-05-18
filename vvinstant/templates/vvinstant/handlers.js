@@ -1,8 +1,8 @@
 {% load vvinstant_tags %}
-console.log("NUM: {% num_excluded_chans %}");
+//console.log("NUM: {% num_excluded_chans %}");
 {% if num_excluded_chans != 0 %}
 	var exclude = [{% exclude_chans %}];
-	console.log("EX VAR: "+exclude);
+	//console.log("EX VAR: "+exclude);
 	for (i=0;i<exclude.length;i++) {
 		console.log(channel+" / "+exclude[i]);
 		if (channel === exclude[i]) {
@@ -10,7 +10,7 @@ console.log("NUM: {% num_excluded_chans %}");
 		}
 	}
 {% else %}
-console.log("NO");
+//console.log("NO");
 {% endif %}
 app.msgIconClass["fa-envelope-o"] = false;
 app.msgIconClass["fa-envelope"] = true;

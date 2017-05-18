@@ -5,14 +5,18 @@ from django.views.generic.base import View
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.conf import settings
-from braces.views import LoginRequiredMixin, SuperuserRequiredMixin
+from django.shortcuts import redirect
 from instant.producers import publish
 
 
-class PostMsgView(LoginRequiredMixin, SuperuserRequiredMixin, View):
-    login_url = settings.LOGIN_URL
+class PostMsgView(View):
     
     def post(self, request, *args, **kwargs):
+        if not request.user.is_superuser:
+            #print("NOT SUPERUSER")
+            return JsonResponse({"ok":0})
+        #print("NOT SUPERUSER")
+        
         data = json.loads(self.request.body.decode('utf-8'))
         msg = data["msg"]
         channel = data["channel"]

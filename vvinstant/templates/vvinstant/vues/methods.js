@@ -13,6 +13,59 @@
 			this.instantForm = true;
 		}
 	},
+	postInstantForm: function() {
+		console.log("PUBLISH");
+		
+		var form = this.get("instant_form");
+		var data = this.serializeForm(form);
+		var empty = '<i class="fa fa-close" style="color:red"></i>&nbsp;{% trans "Please write a message" %}';
+		var emptychan = '<i class="fa fa-close" style="color:red"></i>&nbsp;{% trans "Please select a channel" %}';
+		if (data.msg === "") {
+			this.statusMsg(empty);
+			return
+		}
+		if (app.activeChannel === "") {
+			this.statusMsg(emptychan);
+			return
+		}
+		data["channel"] = this.activeChannel;
+		data["event_class"] = this.eventClass;
+		var url = "{% url 'instant-post-msg' %}";
+		function error(err) {
+			console.log(err);
+		}
+		function action(response) {	
+			if (response.data.ok == 1) {
+				status = '<i class="fa fa-check" style="color:green"></i>&nbsp;{% trans "Message sent" %}';
+				app.statusMsg(status);
+				app.msgToSend = "";
+			} else {
+				app.statusMsg(err);
+			}
+			
+		}
+		this.postForm(url, data, action, error);
+	},
+	statusMsg: function(msg) {
+		app.show("msg_status");
+		app.msgStatus = msg;
+		app.hide("msg_status", 2500);
+	},
+	hide: function(el, delay) {
+		elem = this.get(el);
+		var action = function() { elem.style.display = "none" };
+		if (delay !== undefined) {
+			setTimeout(function() {
+				 action()
+			}, delay);
+		} else {
+			action()
+		}
+	},
+	show: function(el) {
+		elem = this.get(el);
+		elem.style.display = "block"
+	},
 	activateChannel: function(channel) {
 		{% get_channels as channels %}
 		{% for ch in channels %}

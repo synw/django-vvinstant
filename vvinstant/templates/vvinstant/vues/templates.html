@@ -22,19 +22,20 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12" style="padding-top:1em">
-			<form id="instant_form" class="form-horizontal">
+			<form id="instant_form" class="form-horizontal" onsubmit="return false">
 				<div class="col-xs-12 col-sm-10">
 					<div class="form-group">
-						<input id="msg" class="form-control" type="text" style="min-width:80%" 
+						<input id="msg" class="form-control" type="text" name="msg" style="min-width:80%" 
 							v-bind:placeholder="instantFormPlaceholder" v-model="msgToSend">
 						</input>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-2">
 					<div class="form-group">
-						<button id="submitMsg" type="submit" class="btn btn-block btn-primary disabled">{% trans "Publish" %}</button>
+						<button id="submitMsg" @click="postInstantForm()" class="btn btn-block btn-primary disabled">{% trans "Publish" %}</button>
 					</div>
 				</div>
+				{% csrf_token %}
 			</form>
 		</div>
 	</div>
