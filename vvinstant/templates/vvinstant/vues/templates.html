@@ -1,43 +1,37 @@
 {% load i18n vvinstant_tags %}
 {% if user.is_superuser %}
-<div id="instant" class="container-fluid" style="display:none" v-show="instantForm">
-	<div class="row">
-		<div class="col-xs-12 text-right" style="padding-top:0.5em">
-				<div class="pull-left" v-for="cl in eventLabels" v-bind:div="cl">
-					<div v-bind:id="cl.name"
-						href="" 
-						style="margin-right:0.5em;display:inline-block;opacity:0.6" 
-						v-html="cl.label" 
-						@click="activateEventClass(cl.name)">
-					</div>
-				</div>
-				<div id="msg_status" class="pull-left" style="display:inline-block;margin:0.2em 1em 0 0.5em;" v-html="msgStatus"></div>
-				{% get_channels as channels %}
-				{% for channel in channels %}
-					<div id="{{ channel }}" class="label label-default" style="margin:0.5em;display:inline-block" @click="activateChannel('{{ channel }}')">
-						{{ channel }}
-					</div>
-				{% endfor %}
+<div id="instant" style="display:none" class="flex" v-show="instantForm">
+	<div class="event-labels">
+		<span class="pull-left" v-for="cl in eventLabels" v-bind:div="cl">
+			<span v-bind:id="cl.name"
+				href="" 
+				class="event-label inline"
+				v-html="cl.label" 
+				@click="activateEventClass(cl.name)">
+			</span>
+		</span>
+		{% get_channels as channels %}
+		<div id="chans" class="pull-right">
+			{% for channel in channels %}
+				<span id="{{ channel }}" class="label label-default chan" @click="activateChannel('{{ channel }}')">
+					{{ channel }}
+				</span>
+			{% endfor %}
 		</div>
+		<span id="msg_status" v-html="msgStatus" class="pull-right"></span>
 	</div>
-	<div class="row">
-		<div class="col-xs-12" style="padding-top:1em">
-			<form id="instant_form" class="form-horizontal" onsubmit="return false">
-				<div class="col-xs-12 col-sm-10">
-					<div class="form-group">
-						<input id="msg" class="form-control" type="text" name="msg" style="min-width:80%" 
-							v-bind:placeholder="instantFormPlaceholder" v-model="msgToSend">
-						</input>
-					</div>
-				</div>
-				<div class="col-xs-12 col-sm-2">
-					<div class="form-group">
-						<button id="submitMsg" @click="postInstantForm()" class="btn btn-block btn-primary disabled">{% trans "Publish" %}</button>
-					</div>
-				</div>
-				{% csrf_token %}
-			</form>
-		</div>
+	<div class="full" style="padding:0 1em 0.5em 1em">
+		<form id="instant_form" onsubmit="return false">
+			<div class="inline" style="min-width:80%">
+				<input id="msg" type="text" name="msg" style="min-width:80%" 
+					v-bind:placeholder="instantFormPlaceholder" v-model="msgToSend">
+				</input>
+			</div>
+			<div class="inline">
+				<button id="submitMsg" @click="postInstantForm()" class="disabled">{% trans "Publish" %}</button>
+			</div>
+			{% csrf_token %}
+		</form>
 	</div>
 </div>
 {% endif %}

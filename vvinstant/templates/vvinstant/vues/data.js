@@ -18,3 +18,5 @@ msgIconClass: {
 autoMsg: false,
 warningMsg: "",
 infoMsg: "",
+messages: "",
+sidebarUp: false,

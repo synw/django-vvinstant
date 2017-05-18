@@ -14,8 +14,6 @@
 		}
 	},
 	postInstantForm: function() {
-		console.log("PUBLISH");
-		
 		var form = this.get("instant_form");
 		var data = this.serializeForm(form);
 		var empty = '<i class="fa fa-close" style="color:red"></i>&nbsp;{% trans "Please write a message" %}';
@@ -106,6 +104,20 @@
 		}
 	},
 {% endif %}
+toggleSidebar: function() {
+	sidebar = this.get("sidebar");
+	//console.log("CLASS", sidebar.className);
+	if (this.sidebarUp) {
+		//console.log("IS UP");
+		this.sidebarUp = false;
+		sidebar.className = "hidden";
+	} else {
+		//console.log("IS DOWN");
+		this.sidebarUp = true;
+		sidebar.className = "flex";
+	}
+	//console.log("CLASS", sidebar.className);
+},
 ecs: function() {
 	return ['default', 'important', 'ok', 'info', 'debug', 'warning']
 },
